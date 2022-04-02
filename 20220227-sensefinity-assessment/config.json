@@ -1,0 +1,9 @@
+{
+    "server": {
+        "host":"localhost",
+        "port":5000
+    },
+    "api_key": {
+        "openweathermap":"244df0cbb2bcae2bca2fbe929ae3a613"
+    }
+}
