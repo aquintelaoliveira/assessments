@@ -6,7 +6,7 @@ package banking;
  * {@link #accountNumber}: Long<br>
  * {@link #bank}: Bank<br>
  */
-public class Transaction {
+public class Transaction implements TransactionInterface{ // TODO: MISSING implements
 	private Long accountNumber;
 	private Bank bank;
 

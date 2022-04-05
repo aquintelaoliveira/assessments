@@ -10,17 +10,20 @@ import java.util.List;
  * {@link #authorizedUsers}: List&lt;Person&gt;<br>
  */
 public class CommercialAccount extends Account {
-	private List<Person> authorizedUsers;
+	private final List<Person> authorizedUsers;
 
 	public CommercialAccount(Company company, Long accountNumber, int pin, double startingDeposit) {
 		super(company, accountNumber, pin, startingDeposit);
+		authorizedUsers = new ArrayList<>();
 	}
 
 	/**
 	 * @param person The authorized user to add to the account.
 	 */
 	protected void addAuthorizedUser(Person person) {
-		authorizedUsers.add(person);
+		if (!isAuthorizedUser(person)) {
+			authorizedUsers.add(person);
+		}
 	}
 
 	/**

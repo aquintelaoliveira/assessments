@@ -127,6 +127,22 @@ count_topic_words = async (topic) => {
 
 (async() => { console.log( await count_topic_words("pizza") ) })();
 
+/*
+    count_topic_words = async (topic) => {
+        try {
+            const data = await axios({
+                url: "https://en.wikipedia.org//w/api.php?action=parse&format=json&page=${topic} ",
+                method: "get",
+            });
+            let re = new RegExp(`${topic}`, "gi");
+            let textTopic = data.parse.text['*'];
+            return textTopic.match(re).length;
+        } catch(err) {
+            throw new Error(err); 
+        }
+    }
+*/
+
 // ###############################################################################################################################################################################
 
 /*

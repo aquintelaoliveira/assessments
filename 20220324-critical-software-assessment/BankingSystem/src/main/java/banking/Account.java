@@ -10,7 +10,7 @@ package banking;
  * {@link #pin}: int<br>
  * {@link #balance}: double
  */
-public abstract class Account {
+public abstract class Account implements AccountInterface{
 	private AccountHolder accountHolder;
 	private Long accountNumber;
 	private int pin;
