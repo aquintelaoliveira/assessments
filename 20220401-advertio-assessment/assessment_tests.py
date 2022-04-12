@@ -40,7 +40,7 @@ class TestAssessment(unittest.TestCase):
     # incrementing boundary values tests
     
     def test_incrementing_boundary_values_0(self):
-        self.assertEqual("5", print_footer_pagination(5, 10, 0, 0))
+        self.assertEqual("... 5 ...", print_footer_pagination(5, 10, 0, 0))
 
     def test_incrementing_boundary_values_1(self):
         self.assertEqual("1 ... 5 ... 10", print_footer_pagination(5, 10, 1, 0))
@@ -63,19 +63,19 @@ class TestAssessment(unittest.TestCase):
     # incrementing around values tests
 
     def test_incrementing_around_values_0(self):
-        self.assertEqual("5", print_footer_pagination(5, 10, 0, 0))
+        self.assertEqual("... 5 ...", print_footer_pagination(5, 10, 0, 0))
 
     def test_incrementing_around_values_1(self):
-        self.assertEqual("4 5 6", print_footer_pagination(5, 10, 0, 1))
+        self.assertEqual("... 4 5 6 ...", print_footer_pagination(5, 10, 0, 1))
 
     def test_incrementing_around_values_2(self):
-        self.assertEqual("3 4 5 6 7", print_footer_pagination(5, 10, 0, 2))
+        self.assertEqual("... 3 4 5 6 7 ...", print_footer_pagination(5, 10, 0, 2))
 
     def test_incrementing_around_values_3(self):
-        self.assertEqual("2 3 4 5 6 7 8", print_footer_pagination(5, 10, 0, 3))
+        self.assertEqual("... 2 3 4 5 6 7 8 ...", print_footer_pagination(5, 10, 0, 3))
 
     def test_incrementing_boundary_values_4(self):
-        self.assertEqual("1 2 3 4 5 6 7 8 9",  print_footer_pagination(5, 10, 0, 4))
+        self.assertEqual("1 2 3 4 5 6 7 8 9 ...",  print_footer_pagination(5, 10, 0, 4))
 
     def test_incrementing_around_values_5(self):
         self.assertEqual("1 2 3 4 5 6 7 8 9 10", print_footer_pagination(5, 10, 0, 5))
@@ -86,7 +86,7 @@ class TestAssessment(unittest.TestCase):
     # incrementing both boundary around values tests
 
     def test_incrementing_around_values_0(self):
-        self.assertEqual("5", print_footer_pagination(5, 10, 0, 0))
+        self.assertEqual("... 5 ...", print_footer_pagination(5, 10, 0, 0))
 
     def test_incrementing_around_values_1(self):
         self.assertEqual("1 ... 4 5 6 ... 10", print_footer_pagination(5, 10, 1, 1))
@@ -105,6 +105,13 @@ class TestAssessment(unittest.TestCase):
 
     def test_incrementing_around_values_6(self):
         self.assertEqual("1 2 3 4 5 6 7 8 9 10", print_footer_pagination(5, 10, 6, 6))
+
+    # other edge cases
+    def test_current_page_equal_to_first_page(self):    
+        self.assertEqual("1 2 3 ... 8 9 10", print_footer_pagination(1, 10, 3, 1))
+
+    def test_current_page_equal_to_last_page(self):    
+        self.assertEqual("1 2 3 ... 8 9 10", print_footer_pagination(10, 10, 3, 1))
 
 if __name__ == '__main__':
     unittest.main()
